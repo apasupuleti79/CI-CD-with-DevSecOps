@@ -30,35 +30,40 @@ ENV/
 .venv/
 .ENV/
 
-# Testing
+# Testing & Reports
 .coverage
 .pytest_cache/
 htmlcov/
 .tox/
 .cache
 nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-test-results.xml
+reports/
+test-verification-report*.json
+
+# Generated scripts and configurations
+scripts/*fixed*
+scripts/verify-pipeline*
+monitoring/alertmanager-*.yml
+monitoring/prometheus-alerts.yml
+monitoring/grafana-dashboard.json
+monitoring/security-monitoring.yml
+monitoring/incident-response-runbook.md
 
 # Security reports (sensitive information)
-bandit-report.*
-safety-report.*
-trivy-report.*
-zap-report.*
-dependency-check-report.*
 security-reports/
-*.sarif
+*.json
+*.txt
+*.xml
+*-report.*
 
-# IDE
+# IDE and Editor
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS
+# OS generated
 .DS_Store
 .DS_Store?
 ._*
@@ -67,41 +72,12 @@ security-reports/
 ehthumbs.db
 Thumbs.db
 
-# Docker
-.dockerignore
-
-# Kubernetes secrets
-*-secret.yaml
-kubeconfig
-
-# Jenkins
-.jenkins/
-
 # Logs
-*.log
 logs/
+*.log
 
 # Temporary files
 tmp/
 temp/
-.tmp
-
-# Environment variables
-.env
-.env.local
-.env.staging
-.env.production
-
-# SSL certificates
-*.pem
-*.key
-*.crt
-*.cert
-
-# Monitoring data
-prometheus_data/
-grafana_data/
-
-# Backup files
-*.bak
-*.backup
+*.tmp
+*.temp

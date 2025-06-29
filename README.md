@@ -75,7 +75,21 @@ graph LR
 
 ## 🏗️ Architecture
 
-### **High-Level Architecture Diagram**
+### **📊 Architecture Overview**
+
+**Multi-layered DevSecOps architecture** with integrated security scanning, automated quality gates, and container-native deployment across staging and production environments.
+
+| 🏗️ **Component** | 📋 **Technologies** | 🎯 **Purpose** |
+|------------------|---------------------|----------------|
+| **Development** | Git, VS Code, Local Testing | Source code management & development |
+| **CI/CD Pipeline** | Jenkins, Blue Ocean, Build Agents | Automated build and deployment |
+| **Security Layer** | Bandit, Safety, Trivy, OWASP ZAP | Multi-stage security scanning |
+| **Quality Gates** | SonarQube, Test Coverage, Code Quality | Automated quality enforcement |
+| **Infrastructure** | Kubernetes, Docker, Container Registry | Scalable container orchestration |
+| **Monitoring** | Prometheus, Grafana, AlertManager | Real-time observability |
+
+<details>
+<summary>🔍 <strong>View Detailed Architecture Diagram</strong></summary>
 
 ```mermaid
 graph TB
@@ -125,7 +139,10 @@ graph TB
     style MONITORING fill:#fce4ec
 ```
 
-### **Security-First Architecture**
+</details>
+
+<details>
+<summary>🛡️ <strong>View Security Architecture Layers</strong></summary>
 
 ```mermaid
 graph TD
@@ -148,6 +165,15 @@ graph TD
     style D fill:#e3f2fd
     style E fill:#f3e5f5
 ```
+
+**Security Integration Points:**
+- **Static Analysis**: Code quality and vulnerability scanning before build
+- **Dependency Checks**: Real-time CVE monitoring and alerting
+- **Container Security**: Image scanning and hardening practices
+- **Runtime Protection**: Dynamic analysis and monitoring in staging
+- **Infrastructure Security**: Kubernetes RBAC and network policies
+
+</details>
 
 ---
 
@@ -228,11 +254,11 @@ git clone https://github.com/apasupuleti79/CI-CD-with-DevSecOps.git
 cd CI-CD-with-DevSecOps
 
 # Windows users - Run automated setup
-.\quick-start.ps1
+.\scripts\quick-start.ps1
 
 # Linux/Mac users - Run setup script
-chmod +x quick-start.sh
-./quick-start.sh
+chmod +x scripts/quick-start.sh
+./scripts/quick-start.sh
 ```
 
 <details>
@@ -267,7 +293,7 @@ curl http://localhost:5000/health
 curl http://localhost:5000/api/info
 
 # Run comprehensive verification
-python verify-pipeline-fixed.py
+python scripts/verify-pipeline-fixed.py
 ```
 
 **Expected Result**: ✅ 85%+ success rate with all critical tests passing
@@ -444,36 +470,20 @@ mindmap
 
 ```
 📦 DevSecOps-CI-CD-Pipeline/
-├── 📁 src/                          # 🐍 Application source code
-│   └── app.py                       # Flask REST API
-├── 📁 tests/                        # 🧪 Test suite
-│   └── test_app.py                  # Unit tests (83.3% coverage)
-├── 📁 docker/                       # 🐳 Container configurations
-│   ├── Dockerfile                   # Multi-stage production build
-│   ├── Dockerfile.security          # Security-hardened variant
-│   └── docker-compose.yml           # Development environment
-├── 📁 k8s/                          # ☸️ Kubernetes manifests
-│   ├── staging/                     # 🎭 Staging environment
-│   │   ├── deployment.yaml          # Application deployment
-│   │   └── service.yaml             # Service + networking
-│   └── production/                  # 🏭 Production environment
-│       ├── deployment.yaml          # Production deployment
-│       └── service.yaml             # Production services
-├── 📁 jenkins/                      # 🔧 CI/CD configurations
-│   ├── Jenkinsfile                  # Pipeline definition
-│   ├── jenkins-setup.md             # Setup instructions
-│   └── pipeline.properties          # Pipeline configuration
-├── 📁 security/                     # 🛡️ Security tooling
-│   ├── generate_security_report.py  # Report generator
-│   └── security-policy.toml         # Security policies
-├── 📁 monitoring/                   # 📊 Observability
-│   ├── health_check.py              # Health monitoring
-│   ├── setup_alerts.py              # Alert configuration
-│   └── dashboards/                  # Grafana dashboards
-├── 📄 requirements.txt              # Python dependencies
-├── 📄 sonar-project.properties      # SonarQube configuration
-├── 📄 verify-pipeline-fixed.py      # Pipeline verification
-└── 📄 README.md                     # This file
+├── 📁 src/                     # Application source code
+├── 📁 tests/                   # Test suite (83.3% coverage)
+├── 📁 docker/                  # Container configurations
+├── 📁 k8s/                     # Kubernetes manifests
+├── 📁 jenkins/                 # CI/CD pipeline & Jenkinsfile
+├── 📁 security/                # Security tools & policies
+├── 📁 monitoring/              # Observability & health checks
+│   ├── configs/                # Generated monitoring configs
+│   └── dashboards/             # Grafana dashboards
+├── 📁 scripts/                 # Automation & verification scripts
+├── 📁 reports/                 # Generated test & security reports
+├── 📄 requirements.txt         # Python dependencies
+├── 📄 sonar-project.properties # Code quality configuration
+└── 📄 README.md               # Project documentation
 ```
 
 ---
@@ -961,7 +971,7 @@ $env:PYTHONIOENCODING="utf-8"
 chcp 65001
 
 # Then run the fixed verification
-python verify-pipeline-fixed.py
+python scripts/verify-pipeline-fixed.py
 ```
 
 ### Fix 2: Individual Component Testing
@@ -999,7 +1009,7 @@ python security/generate_security_report.py
 # 4. Re-run tests
 
 # Alternative: Skip Docker tests
-python verify-pipeline-fixed.py  # (automatically skips if Docker unavailable)
+python scripts/verify-pipeline-fixed.py  # (automatically skips if Docker unavailable)
 ```
 
 ### Fix 4: Expected Test Results After Fixes
@@ -1132,7 +1142,7 @@ graph TD
 
 | 🚀 Feature | 📝 Description | 🔗 Try It |
 |------------|----------------|-----------|
-| **Real-time Pipeline** | Watch the CI/CD pipeline execute live | `python verify-pipeline-fixed.py` |
+| **Real-time Pipeline** | Watch the CI/CD pipeline execute live | `python scripts/verify-pipeline-fixed.py` |
 | **Security Dashboard** | Interactive security scan results | `python security/generate_security_report.py` |
 | **Health Monitoring** | Live application health metrics | `curl localhost:5000/health` |
 | **Performance Testing** | Load test the application | `python monitoring/health_check.py --load-test` |
@@ -1158,7 +1168,7 @@ git clone https://github.com/apasupuleti79/CI-CD-with-DevSecOps.git
 cd CI-CD-with-DevSecOps
 
 # 2. Run full pipeline simulation
-python verify-pipeline-fixed.py
+python scripts/verify-pipeline-fixed.py
 
 # 3. Start application
 python src/app.py
@@ -1534,7 +1544,7 @@ graph LR
 1. **🍴 Fork** the repository
 2. **🌿 Create** a feature branch: `git checkout -b feature/amazing-feature`
 3. **💻 Make** your changes with tests
-4. **🧪 Run** the verification: `python verify-pipeline-fixed.py`
+4. **🧪 Run** the verification: `python scripts/verify-pipeline-fixed.py`
 5. **🔒 Ensure** security scans pass
 6. **📝 Submit** a pull request
 
