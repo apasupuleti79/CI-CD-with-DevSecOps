@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 DevSecOps CI/CD Pipeline with Jenkins
+# 🚀 Secure CI/CD Pipeline with Jenkins: A DevSecOps Approach
 
 ### *Comprehensive Security-First DevOps Implementation*
 
