@@ -1,0 +1,29 @@
+global:
+  slack_api_url: https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+receivers:
+- name: web.hook
+  slack_configs:
+  - api_url: '{{ .SlackAPIURL }}'
+    channel: '#devsecops-alerts'
+    send_resolved: true
+    text: '{{ range .Alerts }}
+
+      *Alert:* {{ .Annotations.summary }}
+
+      *Description:* {{ .Annotations.description }}
+
+      *Severity:* {{ .Labels.severity }}
+
+      *Service:* {{ .Labels.service }}
+
+      *Deployment:* {{ .Labels.deployment }}
+
+      {{ end }}'
+    title: 'DevSecOps Alert: {{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'
+route:
+  group_by:
+  - alertname
+  group_interval: 10s
+  group_wait: 10s
+  receiver: web.hook
+  repeat_interval: 1h

@@ -1,0 +1,18 @@
+Flask==2.3.3
+Werkzeug==2.3.7
+pytest==7.4.2
+pytest-cov==4.1.0
+requests==2.31.0
+gunicorn==21.2.0
+
+# Security scanning tools
+bandit==1.7.5
+safety==2.3.4
+
+# Development dependencies
+black==23.9.1
+flake8==6.1.0
+isort==5.12.0
+
+# Monitoring and logging
+prometheus-flask-exporter==0.23.0

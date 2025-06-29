@@ -1,0 +1,47 @@
+global:
+  smtp_auth_password: ''
+  smtp_auth_username: ''
+  smtp_from: alerts@company.com
+  smtp_smarthost: localhost:587
+receivers:
+- email_configs:
+  - body: 'DevSecOps Security Alert
+
+
+      {{ range .Alerts }}
+
+      Alert: {{ .Annotations.summary }}
+
+      Description: {{ .Annotations.description }}
+
+      Severity: {{ .Labels.severity }}
+
+      Service: {{ .Labels.service }}
+
+      Deployment: {{ .Labels.deployment }}
+
+      Time: {{ .StartsAt }}
+
+
+      {{ end }}
+
+
+      Please investigate immediately.
+
+
+      Dashboard: https://grafana.company.com/d/devsecops
+
+      Runbook: https://wiki.company.com/devops/runbooks/security-alerts
+
+      '
+    subject: 'DevSecOps Alert: {{ range .Alerts }}{{ .Annotations.summary }}{{ end
+      }}'
+    to: security@company.com
+  name: email-notifications
+route:
+  group_by:
+  - alertname
+  group_interval: 10s
+  group_wait: 10s
+  receiver: email-notifications
+  repeat_interval: 1h

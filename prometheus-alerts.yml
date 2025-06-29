@@ -1,0 +1,64 @@
+groups:
+- name: devsecops-app-alerts
+  rules:
+  - alert: ApplicationDown
+    annotations:
+      description: The DevSecOps application has been down for more than 5 minutes.
+      summary: DevSecOps application is down
+    expr: up{job="my-devsecops-app"} == 0
+    for: 5m
+    labels:
+      deployment: test-v1.0
+      service: my-devsecops-app
+      severity: critical
+  - alert: HighResponseTime
+    annotations:
+      description: Average response time is above 2 seconds for 10 minutes.
+      summary: High response time detected
+    expr: avg(http_request_duration_seconds{job="my-devsecops-app"}) > 2
+    for: 10m
+    labels:
+      deployment: test-v1.0
+      service: my-devsecops-app
+      severity: warning
+  - alert: HighErrorRate
+    annotations:
+      description: Error rate is above 10% for 5 minutes.
+      summary: High error rate detected
+    expr: rate(http_requests_total{job="my-devsecops-app",status=~"5.."}[5m]) > 0.1
+    for: 5m
+    labels:
+      deployment: test-v1.0
+      service: my-devsecops-app
+      severity: warning
+  - alert: SecurityVulnerabilityDetected
+    annotations:
+      description: A critical security vulnerability has been detected in the application.
+      summary: Critical security vulnerability detected
+    expr: security_vulnerabilities_total{severity="critical"} > 0
+    for: 0m
+    labels:
+      deployment: test-v1.0
+      service: my-devsecops-app
+      severity: critical
+  - alert: MemoryUsageHigh
+    annotations:
+      description: Container memory usage is above 80% for 10 minutes.
+      summary: High memory usage
+    expr: container_memory_usage_bytes{name="my-devsecops-app"} / container_spec_memory_limit_bytes{name="my-devsecops-app"}
+      > 0.8
+    for: 10m
+    labels:
+      deployment: test-v1.0
+      service: my-devsecops-app
+      severity: warning
+  - alert: CPUUsageHigh
+    annotations:
+      description: Container CPU usage is above 80% for 15 minutes.
+      summary: High CPU usage
+    expr: rate(container_cpu_usage_seconds_total{name="my-devsecops-app"}[5m]) > 0.8
+    for: 15m
+    labels:
+      deployment: test-v1.0
+      service: my-devsecops-app
+      severity: warning

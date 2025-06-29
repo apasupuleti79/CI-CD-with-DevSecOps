@@ -1,0 +1,33 @@
+groups:
+- name: security-monitoring
+  rules:
+  - alert: SuspiciousLoginActivity
+    annotations:
+      description: More than 10 failed login attempts in 5 minutes.
+      summary: High number of failed login attempts
+    expr: increase(failed_login_attempts_total[5m]) > 10
+    for: 2m
+    labels:
+      category: security
+      deployment: test-v1.0
+      severity: warning
+  - alert: UnauthorizedAPIAccess
+    annotations:
+      description: More than 20 401 responses in 5 minutes.
+      summary: High number of unauthorized API requests
+    expr: increase(http_requests_total{status="401"}[5m]) > 20
+    for: 5m
+    labels:
+      category: security
+      deployment: test-v1.0
+      severity: warning
+  - alert: SecurityScanFailure
+    annotations:
+      description: Automated security scan has failed or detected critical issues.
+      summary: Security scan failed
+    expr: security_scan_status != 1
+    for: 0m
+    labels:
+      category: security
+      deployment: test-v1.0
+      severity: critical

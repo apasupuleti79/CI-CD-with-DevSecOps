@@ -1,0 +1,161 @@
+# Security Policy Configuration for DevSecOps Pipeline
+
+# Bandit Configuration for Python Security Scanning
+[bandit]
+# Skip certain tests if needed
+skips = ["B101"]  # Skip assert_used test in non-production code
+
+# Exclude test files from certain checks
+exclude_dirs = ["tests", "venv", ".venv"]
+
+# Confidence levels: LOW, MEDIUM, HIGH
+confidence = "MEDIUM"
+
+# Severity levels: LOW, MEDIUM, HIGH
+severity = "MEDIUM"
+
+# Custom security rules
+[bandit.plugins]
+# Enable all security plugins
+enabled = true
+
+# SonarQube Quality Gate Configuration
+[sonarqube]
+# Quality gate conditions
+coverage_threshold = 80
+duplicated_lines_threshold = 3
+maintainability_rating = "A"
+reliability_rating = "A" 
+security_rating = "A"
+
+# Code smells threshold
+code_smells_threshold = 10
+
+# Security hotspots threshold
+security_hotspots_threshold = 0
+
+# OWASP Dependency Check Configuration
+[dependency-check]
+# Fail build on CVSS score threshold
+fail_on_cvss = 7.0
+
+# Suppression file for false positives
+suppression_file = "security/dependency-check-suppressions.xml"
+
+# Update NVD database
+auto_update = true
+
+# Container Security Policy
+[container-security]
+# Trivy severity threshold
+severity_threshold = "HIGH"
+
+# Allowed base images (whitelist)
+allowed_base_images = [
+    "python:3.11-slim",
+    "python:3.10-slim",
+    "alpine:latest",
+    "ubuntu:22.04"
+]
+
+# Prohibited packages/software
+prohibited_packages = [
+    "telnet",
+    "ftp",
+    "rsh",
+    "sudo"
+]
+
+# Required security configurations
+required_configs = [
+    "non-root-user",
+    "read-only-filesystem",
+    "no-privilege-escalation"
+]
+
+# DAST Configuration
+[dast]
+# OWASP ZAP scanning rules
+passive_scan = true
+active_scan = false  # Disable for staging to avoid disruption
+
+# Risk levels to fail build
+fail_on_risk_levels = ["HIGH"]
+
+# Authentication configuration
+auth_method = "none"  # Configure as needed
+
+# Scan timeout in minutes
+timeout = 30
+
+# Security Thresholds
+[thresholds]
+# Maximum allowed vulnerabilities by severity
+max_critical = 0
+max_high = 5
+max_medium = 20
+max_low = 50
+
+# Code quality thresholds
+min_code_coverage = 80
+max_cyclomatic_complexity = 10
+max_code_duplication = 5
+
+# Performance thresholds
+max_response_time = 2000  # milliseconds
+min_availability = 99.9   # percentage
+
+# Compliance Requirements
+[compliance]
+# Security standards compliance
+standards = [
+    "OWASP-ASVS-4.0",
+    "NIST-SP-800-53",
+    "ISO-27001"
+]
+
+# Data protection requirements
+data_classification = [
+    "public",
+    "internal",
+    "confidential",
+    "restricted"
+]
+
+# Encryption requirements
+encryption_in_transit = true
+encryption_at_rest = true
+
+# Monitoring and Alerting
+[monitoring]
+# Security monitoring tools
+siem_integration = true
+log_aggregation = true
+
+# Alert thresholds
+failed_login_threshold = 5
+suspicious_activity_threshold = 3
+
+# Notification channels
+notification_channels = [
+    "email",
+    "slack",
+    "pagerduty"
+]
+
+# Incident Response
+[incident-response]
+# Response team contacts
+security_team_email = "security@company.com"
+escalation_contact = "security-manager@company.com"
+
+# Response SLAs (in hours)
+critical_response_time = 1
+high_response_time = 4
+medium_response_time = 24
+low_response_time = 72
+
+# Automated response actions
+auto_block_suspicious_ips = true
+auto_quarantine_malicious_files = true
+auto_disable_compromised_accounts = false  # Requires manual approval

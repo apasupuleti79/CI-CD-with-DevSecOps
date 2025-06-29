@@ -1,0 +1,32 @@
+# Dockerfile security scanning configuration
+FROM python:3.11-slim
+
+# Security: Run as non-root user
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+
+# Security: Update packages and remove package manager cache
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Security: Copy only necessary files
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Security: Set proper file permissions
+COPY --chown=appuser:appuser src/ ./src/
+COPY --chown=appuser:appuser setup.py .
+
+# Security: Remove unnecessary packages
+RUN apt-get purge -y --auto-remove \
+    && apt-get clean
+
+# Security: Switch to non-root user
+USER appuser
+
+# Security: Don't run as PID 1
+ENTRYPOINT ["python", "-m"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "src.app:app"]

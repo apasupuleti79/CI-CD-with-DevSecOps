@@ -1,0 +1,116 @@
+{
+  "timestamp": "2025-06-29 16:09:32",
+  "summary": {
+    "total_tests": 41,
+    "passed": 27,
+    "failed": 14,
+    "warnings": 0,
+    "success_rate": 65.85
+  },
+  "tests": [
+    {
+      "name": "Python installation",
+      "status": "PASSED",
+      "output": "Python 3.12.7\n"
+    },
+    {
+      "name": "Pip package manager",
+      "status": "PASSED",
+      "output": "pip 24.3.1 from C:\\Users\\prana\\AppData\\Roaming\\Python\\Python312\\site-packages\\pip (python 3.12)\n\n"
+    },
+    {
+      "name": "Git version control",
+      "status": "PASSED",
+      "output": "git version 2.47.1.windows.1\n"
+    },
+    {
+      "name": "Docker installation",
+      "status": "PASSED",
+      "output": "Docker version 27.3.1, build ce12230\n"
+    },
+    {
+      "name": "Virtual environment creation",
+      "status": "PASSED",
+      "output": "No output"
+    },
+    {
+      "name": "Install dependencies",
+      "status": "PASSED",
+      "output": "Collecting Flask==2.3.3 (from -r requirements.txt (line 1))\n  Downloading flask-2.3.3-py3-none-any.whl.metadata (3.6 kB)\nCollecting Werkzeug==2.3.7 (from -r requirements.txt (line 2))\n  Downloading werkzeug-2.3.7-py3-none-any.whl.metadata (4.1 kB)\nCollecting pytest==7.4.2 (from -r requirements.txt (line 3))\n  Downloading pytest-7.4.2-py3-none-any.whl.metadata (7.9 kB)\nCollecting pytest-cov==4.1.0 (from -r requirements.txt (line 4))\n  Downloading pytest_cov-4.1.0-py3-none-any.whl.metadata (26 kB)"
+    },
+    {
+      "name": "Flask import test",
+      "status": "PASSED",
+      "output": "Flask version: 2.3.3\n"
+    },
+    {
+      "name": "Pytest import test",
+      "status": "PASSED",
+      "output": "Pytest version: 7.4.2\n"
+    },
+    {
+      "name": "Unit tests with coverage",
+      "status": "PASSED",
+      "output": "============================= test session starts =============================\nplatform win32 -- Python 3.12.7, pytest-7.4.2, pluggy-1.6.0 -- C:\\Users\\prana\\My-DevSecOps-Project\\venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\prana\\My-DevSecOps-Project\nplugins: cov-4.1.0\ncollecting ... collected 8 items\n\ntests/test_app.py::test_health_check PASSED                              [ 12%]\ntests/test_app.py::test_app_info PASSED                                  [ 25%]\ntests/test_app."
+    },
+    {
+      "name": "Install security tools",
+      "status": "PASSED",
+      "output": "Requirement already satisfied: bandit in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (1.7.5)\nRequirement already satisfied: safety in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (2.3.4)\nRequirement already satisfied: GitPython>=1.0.1 in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (from bandit) (3.1.44)\nRequirement already satisfied: PyYAML>=5.3.1 in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (from bandit) (6.0.2)\nRequirement already sa"
+    },
+    {
+      "name": "Bandit security scan (JSON)",
+      "status": "FAILED",
+      "error": "[main]\tINFO\tprofile include tests: None\n[main]\tINFO\tprofile exclude tests: None\n[main]\tINFO\tcli include tests: None\n[main]\tINFO\tcli exclude tests: None\n[json]\tINFO\tJSON output written to file: bandit-report.json\n",
+      "output": ""
+    },
+    {
+      "name": "Bandit security scan (TXT)",
+      "status": "FAILED",
+      "error": "[main]\tINFO\tprofile include tests: None\n[main]\tINFO\tprofile exclude tests: None\n[main]\tINFO\tcli include tests: None\n[main]\tINFO\tcli exclude tests: None\n[main]\tINFO\trunning on Python 3.12.7\n[text]\tINFO\tText output written to file: bandit-report.txt\n",
+      "output": ""
+    },
+    {
+      "name": "Safety dependency check (JSON)",
+      "status": "FAILED",
+      "error": "Usage: safety check [OPTIONS]\nTry 'safety check --help' for help.\n\nError: Invalid value for '--output' / '-o': 'safety-report.json' is not one of 'screen', 'text', 'json', 'bare'.\n",
+      "output": ""
+    },
+    {
+      "name": "Safety dependency check (TXT)",
+      "status": "FAILED",
+      "error": "Usage: safety check [OPTIONS]\nTry 'safety check --help' for help.\n\nError: Invalid value for '--output' / '-o': 'safety-report.txt' is not one of 'screen', 'text', 'json', 'bare'.\n",
+      "output": ""
+    },
+    {
+      "name": "Generate consolidated security report",
+      "status": "FAILED",
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\prana\\My-DevSecOps-Project\\security\\generate_security_report.py\", line 336, in <module>\n    main()\n  File \"C:\\Users\\prana\\My-DevSecOps-Project\\security\\generate_security_report.py\", line 254, in main\n    print(\"\\U0001f50d Generating consolidated security report...\")\n  File \"C:\\tools\\Anaconda3\\Lib\\encodings\\cp1252.py\", line 19, in encode\n    return codecs.charmap_encode(input,self.errors,encoding_table)[0]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nUnicodeEncodeError: 'charmap' codec can't encode character '\\U0001f50d' in position 0: character maps to <undefined>\n",
+      "output": ""
+    },
+    {
+      "name": "Docker image build",
+      "status": "FAILED",
+      "error": "ERROR: error during connect: Head \"http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/_ping\": open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.\n",
+      "output": ""
+    },
+    {
+      "name": "Check Docker image exists",
+      "status": "FAILED",
+      "error": "error during connect: Head \"http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/_ping\": open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.\n",
+      "output": ""
+    },
+    {
+      "name": "Alert configuration generation",
+      "status": "FAILED",
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\prana\\My-DevSecOps-Project\\monitoring\\setup_alerts.py\", line 522, in <module>\n    main()\n  File \"C:\\Users\\prana\\My-DevSecOps-Project\\monitoring\\setup_alerts.py\", line 474, in main\n    print(f\"\\U0001f6a8 Setting up monitoring alerts for deployment {args.deployment}\")\n  File \"C:\\tools\\Anaconda3\\Lib\\encodings\\cp1252.py\", line 19, in encode\n    return codecs.charmap_encode(input,self.errors,encoding_table)[0]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nUnicodeEncodeError: 'charmap' codec can't encode character '\\U0001f6a8' in position 0: character maps to <undefined>\n",
+      "output": ""
+    },
+    {
+      "name": "Validate staging manifests (dry-run)",
+      "status": "FAILED",
+      "error": "error validating \"k8s\\\\staging\\\\deployment.yaml\": error validating data: failed to download openapi: Get \"http://localhost:8080/openapi/v2?timeout=32s\": dial tcp [::1]:8080: connectex: No connection could be made because the target machine actively refused it.; if you choose to ignore these errors, turn validation off with --validate=false\nerror validating \"k8s\\\\staging\\\\service.yaml\": error validating data: failed to download openapi: Get \"http://localhost:8080/openapi/v2?timeout=32s\": dial tcp [::1]:8080: connectex: No connection could be made because the target machine actively refused it.; if you choose to ignore these errors, turn validation off with --validate=false\n",
+      "output": ""
+    }
+  ]
+}

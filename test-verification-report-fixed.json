@@ -1,0 +1,122 @@
+{
+  "timestamp": "2025-06-29 16:15:29",
+  "summary": {
+    "total_tests": 36,
+    "passed": 33,
+    "failed": 3,
+    "warnings": 0,
+    "skipped": 0,
+    "success_rate": 91.67
+  },
+  "tests": [
+    {
+      "name": "Python installation",
+      "status": "PASSED",
+      "output": "Python 3.12.7\n",
+      "command": "python --version"
+    },
+    {
+      "name": "Pip package manager",
+      "status": "PASSED",
+      "output": "pip 24.3.1 from C:\\Users\\prana\\AppData\\Roaming\\Python\\Python312\\site-packages\\pip (python 3.12)\n\n",
+      "command": "pip --version"
+    },
+    {
+      "name": "Git version control",
+      "status": "PASSED",
+      "output": "git version 2.47.1.windows.1\n",
+      "command": "git --version"
+    },
+    {
+      "name": "Docker service check",
+      "status": "PASSED",
+      "output": "Client:\n Version:           27.3.1\n API version:       1.47\n Go version:        go1.22.7\n Git commit:        ce12230\n Built:             Fri Sep 20 11:42:27 2024\n OS/Arch:           windows/amd64\n Context:           desktop-linux\n\nServer: Docker Desktop 4.36.0 (175267)\n Engine:\n  Version:          27.3.1\n  API version:      1.47 (minimum version 1.24)\n  Go version:       go1.22.7\n  Git commit:       41ca978\n  Built:            Fri Sep 20 11:41:11 2024\n  OS/Arch:          linux/amd64\n  Experiment",
+      "command": "docker version"
+    },
+    {
+      "name": "Install dependencies",
+      "status": "PASSED",
+      "output": "Requirement already satisfied: Flask==2.3.3 in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (from -r requirements.txt (line 1)) (2.3.3)\nRequirement already satisfied: Werkzeug==2.3.7 in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (from -r requirements.txt (line 2)) (2.3.7)\nRequirement already satisfied: pytest==7.4.2 in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (from -r requirements.txt (line 3)) (7.4.2)\nRequirement already satisfied: pytest-cov==4.1",
+      "command": "venv\\Scripts\\activate.bat && pip install -r requirements.txt"
+    },
+    {
+      "name": "Flask import test",
+      "status": "PASSED",
+      "output": "Flask OK\n",
+      "command": "venv\\Scripts\\activate.bat && python -c \"import flask; print('Flask OK')\""
+    },
+    {
+      "name": "Pytest import test",
+      "status": "PASSED",
+      "output": "Pytest OK\n",
+      "command": "venv\\Scripts\\activate.bat && python -c \"import pytest; print('Pytest OK')\""
+    },
+    {
+      "name": "Unit tests with coverage",
+      "status": "PASSED",
+      "output": "============================= test session starts =============================\nplatform win32 -- Python 3.12.7, pytest-7.4.2, pluggy-1.6.0 -- C:\\Users\\prana\\My-DevSecOps-Project\\venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Users\\prana\\My-DevSecOps-Project\nplugins: cov-4.1.0\ncollecting ... collected 8 items\n\ntests/test_app.py::test_health_check PASSED                              [ 12%]\ntests/test_app.py::test_app_info PASSED                                  [ 25%]\ntests/test_app.",
+      "command": "venv\\Scripts\\activate.bat && python -m pytest tests/ --cov=src --cov-report=xml --junitxml=test-results.xml -v"
+    },
+    {
+      "name": "Install security tools",
+      "status": "PASSED",
+      "output": "Requirement already satisfied: bandit in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (1.7.5)\nRequirement already satisfied: safety in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (2.3.4)\nRequirement already satisfied: GitPython>=1.0.1 in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (from bandit) (3.1.44)\nRequirement already satisfied: PyYAML>=5.3.1 in c:\\users\\prana\\my-devsecops-project\\venv\\lib\\site-packages (from bandit) (6.0.2)\nRequirement already sa",
+      "command": "venv\\Scripts\\activate.bat && pip install bandit safety"
+    },
+    {
+      "name": "Bandit security scan (JSON)",
+      "status": "PASSED",
+      "output": "No output",
+      "command": "venv\\Scripts\\activate.bat && bandit -r src/ -f json -o bandit-report.json"
+    },
+    {
+      "name": "Bandit security scan (TXT)",
+      "status": "PASSED",
+      "output": "No output",
+      "command": "venv\\Scripts\\activate.bat && bandit -r src/ -f txt -o bandit-report.txt"
+    },
+    {
+      "name": "Safety dependency check (JSON fixed)",
+      "status": "PASSED",
+      "output": "No output",
+      "command": "venv\\Scripts\\activate.bat && safety check --json > safety-report.json"
+    },
+    {
+      "name": "Safety dependency check (TXT fixed)",
+      "status": "PASSED",
+      "output": "No output",
+      "command": "venv\\Scripts\\activate.bat && safety check --output text > safety-report.txt"
+    },
+    {
+      "name": "Generate consolidated security report (UTF-8 fixed)",
+      "status": "FAILED",
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\prana\\My-DevSecOps-Project\\security\\generate_security_report.py\", line 342, in <module>\n    main()\n  File \"C:\\Users\\prana\\My-DevSecOps-Project\\security\\generate_security_report.py\", line 316, in main\n    html_report = generate_html_report(security_data)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\prana\\My-DevSecOps-Project\\security\\generate_security_report.py\", line 84, in generate_html_report\n    {security_data['cont",
+      "output": "🔍 Generating consolidated security report...\n",
+      "command": "venv\\Scripts\\activate.bat && set PYTHONIOENCODING=utf-8 && python security/generate_security_report.py"
+    },
+    {
+      "name": "Docker image build",
+      "status": "PASSED",
+      "output": "No output",
+      "command": "docker build -t my-devsecops-app:test -f docker/Dockerfile ."
+    },
+    {
+      "name": "Check Docker image exists",
+      "status": "PASSED",
+      "output": "REPOSITORY:TAG\nmy-devsecops-app:test\n",
+      "command": "docker images my-devsecops-app:test --format \"table {{.Repository}}:{{.Tag}}\""
+    },
+    {
+      "name": "Alert configuration generation (UTF-8 fixed)",
+      "status": "PASSED",
+      "output": "🚨 Setting up monitoring alerts for deployment test-v1.0\n✅ Created Prometheus alerting rules for deployment test-v1.0\n✅ Created Grafana dashboard configuration for deployment test-v1.0\n✅ Created security monitoring rules for deployment test-v1.0\n✅ Created Slack notification configuration\n✅ Created email notification configuration\n✅ Created incident response runbook\n\n✅ Monitoring setup complete for production environment!\n📄 Files created:\n  - prometheus-alerts.yml\n  - security-monitoring.yml\n  - g",
+      "command": "venv\\Scripts\\activate.bat && set PYTHONIOENCODING=utf-8 && python monitoring/setup_alerts.py --deployment test-v1.0"
+    },
+    {
+      "name": "Validate staging manifests (offline)",
+      "status": "PASSED",
+      "output": "No output",
+      "command": "kubectl apply --dry-run=client --validate=false -f k8s/staging/ -o yaml > k8s-validation.yaml"
+    }
+  ]
+}
