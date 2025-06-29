@@ -117,7 +117,7 @@ DEVOPS_EMAIL=devops@company.com
 
 1. Create new item > Multibranch Pipeline
 2. Branch Sources: Git/GitHub
-3. Repository URL: `https://github.com/company/my-devsecops-project.git`
+3. Repository URL: `https://github.com/apasupuleti79/CI-CD-with-DevSecOps.git`
 4. Credentials: Select GitHub credentials
 5. Build Configuration: by Jenkinsfile
 6. Script Path: `Jenkinsfile`

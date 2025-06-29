@@ -50,7 +50,7 @@ Before contributing, ensure you have:
 
 3. **Add upstream remote**
    ```bash
-   git remote add upstream https://github.com/originalowner/my-devsecops-project.git
+   git remote add upstream https://github.com/apasupuleti79/CI-CD-with-DevSecOps.git
    ```
 
 ## 🛠️ Development Setup
