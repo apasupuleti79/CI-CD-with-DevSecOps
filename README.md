@@ -1402,7 +1402,7 @@ With expertise in building secure, scalable CI/CD pipelines, I help organization
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077b5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/akhila-pasupuleti-559b73236)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit-orange?style=for-the-badge&logo=firefox)](https://yourportfolio.com)
-[![Email](https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail)](mailto:akhila.it79@gmail.com)
+[![Email](https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail)](mailto:akhilapasupuleti0709@gmail.com)
 [![Resume](https://img.shields.io/badge/Resume-Download-green?style=for-the-badge&logo=adobeacrobatreader)](https://yourresume.pdf)
 
 </div>
@@ -1412,7 +1412,7 @@ With expertise in building secure, scalable CI/CD pipelines, I help organization
 | 🎯 Opportunity | 📋 Description | 🔗 Action |
 |----------------|----------------|----------|
 | **🏢 Employment** | Full-time DevSecOps/Platform Engineer roles | [View LinkedIn](https://www.linkedin.com/in/akhila-pasupuleti-559b73236) |
-| **💡 Consulting** | DevSecOps transformation and implementation | [Send Email](mailto:akhila.it79@gmail.com) |
+| **💡 Consulting** | DevSecOps transformation and implementation | [Send Email](mailto:akhilapasupuleti0709@gmail.com) |
 | **🤝 Partnership** | Open source collaboration and contributions | [GitHub Issues](https://github.com/apasupuleti79/CI-CD-with-DevSecOps/issues) |
 | **📚 Mentoring** | DevSecOps training and knowledge sharing | [Schedule Call](https://calendly.com/akhila-pasupuleti) |
 | **🎤 Speaking** | Conference talks and technical presentations | [Speaker Bio](https://yourportfolio.com/speaking) |
@@ -1496,7 +1496,7 @@ graph TD
 ### **🔗 Quick Contact**
 
 **For immediate consultation:**
-- 📧 **Email**: [akhila.it79@gmail.com](mailto:akhila.it79@gmail.com?subject=DevSecOps%20Consultation%20Request)
+- 📧 **Email**: [akhilapasupuleti0709@gmail.com](mailto:akhilapasupuleti0709@gmail.com?subject=DevSecOps%20Consultation%20Request)
 - 💼 **LinkedIn**: [Akhila Pasupuleti](https://www.linkedin.com/in/akhila-pasupuleti-559b73236)
 - 📅 **Schedule Call**: [Book 30-min consultation](https://calendly.com/akhila-pasupuleti/30min)
 - 💬 **Issues**: [GitHub Issues](https://github.com/apasupuleti79/CI-CD-with-DevSecOps/issues)
